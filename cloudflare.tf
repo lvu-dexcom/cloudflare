@@ -1,16 +1,8 @@
 provider "cloudflare" {
   email = "lvu@dexcom.com"
-  token = "hvsudLuXTacw0INWqyePOJEwmAYb7htvqaQYNRgT"
+  api_token = "b2cd182e6c98af8870a105ebaa3e17406cc08"
 }
 
-variable "domain" {
-  default = "sharepki-serverdev-us.dexcomdev.com"
-}
-
-resource "cloudflare_record" "sharepki" {
-  domain  = "${var.domain}"
-  name    = "sharepki"
-  value   = "34.123.133.90"
-  type    = "A"
-  proxied = true
+resource "cloudflare_zone" "sharepki" {
+    zone = "sharepki-serverdev-us.dexcomdev.com"
 }
